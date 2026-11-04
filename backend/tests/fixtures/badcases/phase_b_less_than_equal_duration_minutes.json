@@ -1,0 +1,237 @@
+{
+ "decision": "ready_for_scheduling",
+ "fixed_events": [],
+ "goal_plans": [
+  {
+   "source_item_id": "item_1",
+   "goal_title": "周末打羽毛球",
+   "deadline": "2026-10-08",
+   "deadline_provenance": {
+    "field_path": "facts.deadline",
+    "value": "2026-10-08",
+    "source": "system_derived",
+    "reason": "用户说'最近一个月'，参考当前日期2026-09-08推算一个月窗口截止日",
+    "user_editable": true,
+    "display_label": "AI建议，可修改或删除"
+   },
+   "importance": "medium",
+   "urgency": "low",
+   "suggested_goal_horizon_days": 30,
+   "task_templates": [
+    {
+     "task_id": "task_1_1",
+     "title": "打羽毛球",
+     "activity_type": "exercise",
+     "instructions": "周末进行羽毛球运动，热身后对打或练习，注意适度运动避免受伤",
+     "duration_minutes": 90,
+     "occurrences_within_window": 8,
+     "frequency_per_week": 2,
+     "min_gap_hours": 0,
+     "depends_on": [],
+     "hard_constraints": {
+      "allowed_weekdays": [
+       6,
+       7
+      ],
+      "required_periods": [],
+      "fixed_date": null,
+      "fixed_start_time": null,
+      "must_finish_before": null,
+      "required_occurrences_within_window": null,
+      "required_frequency_per_week": null,
+      "minimum_gap_hours": null
+     },
+     "soft_preferences": {
+      "preferred_periods": [
+       "afternoon"
+      ],
+      "pacing": "neutral"
+     },
+     "source": "user_input",
+     "provenance": [
+      {
+       "field_path": "task_template.title",
+       "value": "打羽毛球",
+       "source": "user_input",
+       "reason": "用户明确说出打羽毛球这一具体活动",
+       "user_editable": true,
+       "display_label": "用户输入"
+      },
+      {
+       "field_path": "task_template.hard_constraints.allowed_weekdays",
+       "value": [
+        6,
+        7
+       ],
+       "source": "user_input",
+       "reason": "用户明确说周末，对应星期六和星期日",
+       "user_editable": true,
+       "display_label": "用户输入"
+      },
+      {
+       "field_path": "task_template.duration_minutes",
+       "value": 90,
+       "source": "ai_assumption",
+       "reason": "用户未指定时长，羽毛球运动通常约90分钟",
+       "user_editable": true,
+       "display_label": "AI猜测，可修改"
+      },
+      {
+       "field_path": "task_template.occurrences_within_window",
+       "value": 8,
+       "source": "ai_assumption",
+       "reason": "用户说每周末，一个月约4个周末共8次",
+       "user_editable": true,
+       "display_label": "AI猜测，可修改"
+      },
+      {
+       "field_path": "task_template.frequency_per_week",
+       "value": 2,
+       "source": "ai_assumption",
+       "reason": "用户说每周末，每周2天",
+       "user_editable": true,
+       "display_label": "AI猜测，可修改"
+      },
+      {
+       "field_path": "task_template.soft_preferences.preferred_periods",
+       "value": [
+        "afternoon"
+       ],
+       "source": "ai_suggestion",
+       "reason": "周末下午适合运动，作为软偏好可修改",
+       "user_editable": true,
+       "display_label": "AI建议，可修改或删除"
+      }
+     ],
+     "assumptions": [
+      "用户未指定每次时长，默认90分钟",
+      "用户未指定周六或周日，每周可排1-2次",
+      "用户未指定时段，建议下午作为软偏好"
+     ]
+    }
+   ],
+   "assumptions": [
+    "用户说的'最近一个月'指从2026-09-08起约四周的窗口，截止日取2026-10-08",
+    "用户说的'周末'指星期六和星期日，未指定具体周六或周日"
+   ]
+  },
+  {
+   "source_item_id": "item_2",
+   "goal_title": "周末准备面试",
+   "deadline": "2026-10-08",
+   "deadline_provenance": {
+    "field_path": "facts.deadline",
+    "value": "2026-10-08",
+    "source": "system_derived",
+    "reason": "用户说'最近一个月'，参考当前日期2026-09-08推算一个月窗口截止日",
+    "user_editable": true,
+    "display_label": "AI建议，可修改或删除"
+   },
+   "importance": "medium",
+   "urgency": "low",
+   "suggested_goal_horizon_days": 30,
+   "task_templates": [
+    {
+     "task_id": "task_2_1",
+     "title": "准备面试",
+     "activity_type": "study",
+     "instructions": "周末进行面试准备，包括复习简历、整理项目经验、练习常见面试题等",
+     "duration_minutes": 120,
+     "occurrences_within_window": 8,
+     "frequency_per_week": 2,
+     "min_gap_hours": 0,
+     "depends_on": [],
+     "hard_constraints": {
+      "allowed_weekdays": [
+       6,
+       7
+      ],
+      "required_periods": [],
+      "fixed_date": null,
+      "fixed_start_time": null,
+      "must_finish_before": null,
+      "required_occurrences_within_window": null,
+      "required_frequency_per_week": null,
+      "minimum_gap_hours": null
+     },
+     "soft_preferences": {
+      "preferred_periods": [
+       "morning"
+      ],
+      "pacing": "neutral"
+     },
+     "source": "user_input",
+     "provenance": [
+      {
+       "field_path": "task_template.title",
+       "value": "准备面试",
+       "source": "user_input",
+       "reason": "用户明确说出准备面试这一具体活动",
+       "user_editable": true,
+       "display_label": "用户输入"
+      },
+      {
+       "field_path": "task_template.hard_constraints.allowed_weekdays",
+       "value": [
+        6,
+        7
+       ],
+       "source": "user_input",
+       "reason": "用户明确说周末，对应星期六和星期日",
+       "user_editable": true,
+       "display_label": "用户输入"
+      },
+      {
+       "field_path": "task_template.duration_minutes",
+       "value": 120,
+       "source": "ai_assumption",
+       "reason": "用户未指定时长，面试准备通常每次约120分钟",
+       "user_editable": true,
+       "display_label": "AI猜测，可修改"
+      },
+      {
+       "field_path": "task_template.occurrences_within_window",
+       "value": 8,
+       "source": "ai_assumption",
+       "reason": "用户说每周末，一个月约4个周末共8次",
+       "user_editable": true,
+       "display_label": "AI猜测，可修改"
+      },
+      {
+       "field_path": "task_template.frequency_per_week",
+       "value": 2,
+       "source": "ai_assumption",
+       "reason": "用户说每周末，每周2天",
+       "user_editable": true,
+       "display_label": "AI猜测，可修改"
+      },
+      {
+       "field_path": "task_template.soft_preferences.preferred_periods",
+       "value": [
+        "morning"
+       ],
+       "source": "ai_suggestion",
+       "reason": "周末上午精力较好适合学习，作为软偏好可修改",
+       "user_editable": true,
+       "display_label": "AI建议，可修改或删除"
+      }
+     ],
+     "assumptions": [
+      "用户未指定每次时长，默认120分钟",
+      "用户未指定周六或周日，每周可排1-2次",
+      "用户未指定时段，建议上午作为软偏好"
+     ]
+    }
+   ],
+   "assumptions": [
+    "用户说的'最近一个月'指从2026-09-08起约四周的窗口，截止日取2026-10-08",
+    "用户说的'周末'指星期六和星期日，未指定具体周六或周日"
+   ]
+  }
+ ],
+ "assumptions": [
+  "用户说的'最近一个月'指从2026-09-08起约四周的窗口，截止日取2026-10-08",
+  "用户说的'周末'指星期六和星期日，未指定具体周六或周日",
+  "用户未指定具体时段、时长、次数频率和最小间隔，交给阶段B使用保守默认"
+ ]
+}

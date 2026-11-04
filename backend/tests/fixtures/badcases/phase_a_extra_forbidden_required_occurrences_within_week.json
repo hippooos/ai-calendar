@@ -1,0 +1,433 @@
+{
+ "decision": "needs_clarification",
+ "items": [
+  {
+   "item_id": "item_1",
+   "kind": "explicit_event",
+   "source_text": "请假",
+   "title": "请假",
+   "facts": {
+    "date": "2026-09-09",
+    "start_time": "09:00",
+    "end_time": null,
+    "duration_minutes": 480,
+    "deadline": null,
+    "stated_frequency": null,
+    "activity": "请假",
+    "result_metric": null
+   },
+   "hard_constraints": {
+    "allowed_weekdays": [
+     3
+    ],
+    "required_periods": [
+     "any"
+    ],
+    "fixed_date": "2026-09-09",
+    "fixed_start_time": "09:00",
+    "required_occurrences_within_window": null,
+    "required_frequency_per_week": null,
+    "minimum_gap_hours": null,
+    "must_finish_before": null
+   },
+   "soft_preferences": {
+    "preferred_periods": [],
+    "pacing": "neutral"
+   },
+   "provenance": [
+    {
+     "field_path": "facts.date",
+     "value": "2026-09-09",
+     "source": "ai_assumption",
+     "reason": "用户说“周三前”，当前为2026-09-08周二，取最近可满足的周三即2026-09-09作为请假日期",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    },
+    {
+     "field_path": "facts.start_time",
+     "value": "09:00",
+     "source": "ai_assumption",
+     "reason": "请假为全天安排，按档案 work_start 09:00 作为占位开始时间",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    },
+    {
+     "field_path": "facts.duration_minutes",
+     "value": 480,
+     "source": "ai_assumption",
+     "reason": "请假为全天安排，按8小时工作时长占位",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    },
+    {
+     "field_path": "hard_constraints.allowed_weekdays",
+     "value": [
+      3
+     ],
+     "source": "system_derived",
+     "reason": "由建议日期2026-09-09推导为星期三",
+     "user_editable": true,
+     "display_label": "AI建议，可修改或删除"
+    },
+    {
+     "field_path": "hard_constraints.fixed_date",
+     "value": "2026-09-09",
+     "source": "ai_assumption",
+     "reason": "同 facts.date 理由",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    },
+    {
+     "field_path": "hard_constraints.fixed_start_time",
+     "value": "09:00",
+     "source": "ai_assumption",
+     "reason": "同 facts.start_time 理由",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    }
+   ],
+   "critical_missing": [],
+   "assumptions": [
+    "“周三前”理解为在周三当天完成，取2026-09-09周三作为请假日期",
+    "请假为全天安排，按09:00开始、480分钟占位"
+   ]
+  },
+  {
+   "item_id": "item_2",
+   "kind": "explicit_event",
+   "source_text": "前往A地办事流程",
+   "title": "前往A地办事流程",
+   "facts": {
+    "date": "2026-09-09",
+    "start_time": null,
+    "end_time": null,
+    "duration_minutes": 60,
+    "deadline": "2026-09-09",
+    "stated_frequency": null,
+    "activity": "前往A地办事流程",
+    "result_metric": null
+   },
+   "hard_constraints": {
+    "allowed_weekdays": [
+     3
+    ],
+    "required_periods": [
+     "any"
+    ],
+    "fixed_date": "2026-09-09",
+    "fixed_start_time": null,
+    "required_occurrences_within_week": null,
+    "required_frequency_per_week": null,
+    "minimum_gap_hours": null,
+    "must_finish_before": null
+   },
+   "soft_preferences": {
+    "preferred_periods": [],
+    "pacing": "neutral"
+   },
+   "provenance": [
+    {
+     "field_path": "facts.date",
+     "value": "2026-09-09",
+     "source": "ai_assumption",
+     "reason": "“周三前”取最近周三2026-09-09，子活动分布在该日",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    },
+    {
+     "field_path": "facts.duration_minutes",
+     "value": 60,
+     "source": "ai_assumption",
+     "reason": "办事流程按性质估算约60分钟",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    },
+    {
+     "field_path": "facts.deadline",
+     "value": "2026-09-09",
+     "source": "ai_assumption",
+     "reason": "“周三前”截止日为2026-09-09",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    },
+    {
+     "field_path": "hard_constraints.allowed_weekdays",
+     "value": [
+      3
+     ],
+     "source": "system_derived",
+     "reason": "由建议日期推导为星期三",
+     "user_editable": true,
+     "display_label": "AI建议，可修改或删除"
+    },
+    {
+     "field_path": "hard_constraints.fixed_date",
+     "value": "2026-09-09",
+     "source": "ai_assumption",
+     "reason": "同 facts.date 理由",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    }
+   ],
+   "critical_missing": [
+    "facts.start_time"
+   ],
+   "assumptions": [
+    "“周三前”理解为在周三当天完成，取2026-09-09",
+    "办事流程时长按60分钟估算"
+   ]
+  },
+  {
+   "item_id": "item_3",
+   "kind": "explicit_event",
+   "source_text": "现场登记",
+   "title": "现场登记",
+   "facts": {
+    "date": "2026-09-09",
+    "start_time": null,
+    "end_time": null,
+    "duration_minutes": 60,
+    "deadline": "2026-09-09",
+    "stated_frequency": null,
+    "activity": "现场登记",
+    "result_metric": null
+   },
+   "hard_constraints": {
+    "allowed_weekdays": [
+     3
+    ],
+    "required_periods": [
+     "any"
+    ],
+    "fixed_date": "2026-09-09",
+    "fixed_start_time": null,
+    "required_occurrences_within_window": null,
+    "required_frequency_per_week": null,
+    "minimum_gap_hours": null,
+    "must_finish_before": null
+   },
+   "soft_preferences": {
+    "preferred_periods": [],
+    "pacing": "neutral"
+   },
+   "provenance": [
+    {
+     "field_path": "facts.date",
+     "value": "2026-09-09",
+     "source": "ai_assumption",
+     "reason": "“周三前”取最近周三2026-09-09，子活动分布在该日",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    },
+    {
+     "field_path": "facts.duration_minutes",
+     "value": 60,
+     "source": "ai_assumption",
+     "reason": "现场登记按性质估算约60分钟",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    },
+    {
+     "field_path": "facts.deadline",
+     "value": "2026-09-09",
+     "source": "ai_assumption",
+     "reason": "“周三前”截止日为2026-09-09",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    },
+    {
+     "field_path": "hard_constraints.allowed_weekdays",
+     "value": [
+      3
+     ],
+     "source": "system_derived",
+     "reason": "由建议日期推导为星期三",
+     "user_editable": true,
+     "display_label": "AI建议，可修改或删除"
+    },
+    {
+     "field_path": "hard_constraints.fixed_date",
+     "value": "2026-09-09",
+     "source": "ai_assumption",
+     "reason": "同 facts.date 理由",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    }
+   ],
+   "critical_missing": [
+    "facts.start_time"
+   ],
+   "assumptions": [
+    "“周三前”理解为在周三当天完成，取2026-09-09",
+    "现场登记时长按60分钟估算"
+   ]
+  },
+  {
+   "item_id": "item_4",
+   "kind": "explicit_event",
+   "source_text": "交流会",
+   "title": "交流会",
+   "facts": {
+    "date": "2026-09-09",
+    "start_time": null,
+    "end_time": null,
+    "duration_minutes": 60,
+    "deadline": "2026-09-09",
+    "stated_frequency": null,
+    "activity": "交流会",
+    "result_metric": null
+   },
+   "hard_constraints": {
+    "allowed_weekdays": [
+     3
+    ],
+    "required_periods": [
+     "any"
+    ],
+    "fixed_date": "2026-09-09",
+    "fixed_start_time": null,
+    "required_occurrences_within_window": null,
+    "required_frequency_per_week": null,
+    "minimum_gap_hours": null,
+    "must_finish_before": null
+   },
+   "soft_preferences": {
+    "preferred_periods": [],
+    "pacing": "neutral"
+   },
+   "provenance": [
+    {
+     "field_path": "facts.date",
+     "value": "2026-09-09",
+     "source": "ai_assumption",
+     "reason": "“周三前”取最近周三2026-09-09，子活动分布在该日",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    },
+    {
+     "field_path": "facts.duration_minutes",
+     "value": 60,
+     "source": "ai_assumption",
+     "reason": "交流会按性质估算约60分钟",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    },
+    {
+     "field_path": "facts.deadline",
+     "value": "2026-09-09",
+     "source": "ai_assumption",
+     "reason": "“周三前”截止日为2026-09-09",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    },
+    {
+     "field_path": "hard_constraints.allowed_weekdays",
+     "value": [
+      3
+     ],
+     "source": "system_derived",
+     "reason": "由建议日期推导为星期三",
+     "user_editable": true,
+     "display_label": "AI建议，可修改或删除"
+    },
+    {
+     "field_path": "hard_constraints.fixed_date",
+     "value": "2026-09-09",
+     "source": "ai_assumption",
+     "reason": "同 facts.date 理由",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    }
+   ],
+   "critical_missing": [
+    "facts.start_time"
+   ],
+   "assumptions": [
+    "“周三前”理解为在周三当天完成，取2026-09-09",
+    "交流会时长按60分钟估算"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "question_id": "q1",
+   "priority": 30,
+   "missing_field": "facts.start_time",
+   "question": "前往A地办事流程预计几点开始？",
+   "covers_item_ids": [
+    "item_2"
+   ],
+   "input_type": "single_choice",
+   "options": [
+    {
+     "label": "上午",
+     "value": "morning"
+    },
+    {
+     "label": "下午",
+     "value": "afternoon"
+    },
+    {
+     "label": "晚上",
+     "value": "evening"
+    }
+   ],
+   "allow_custom_input": true
+  },
+  {
+   "question_id": "q2",
+   "priority": 30,
+   "missing_field": "facts.start_time",
+   "question": "现场登记预计几点开始？",
+   "covers_item_ids": [
+    "item_3"
+   ],
+   "input_type": "single_choice",
+   "options": [
+    {
+     "label": "上午",
+     "value": "morning"
+    },
+    {
+     "label": "下午",
+     "value": "afternoon"
+    },
+    {
+     "label": "晚上",
+     "value": "evening"
+    }
+   ],
+   "allow_custom_input": true
+  },
+  {
+   "question_id": "q3",
+   "priority": 30,
+   "missing_field": "facts.start_time",
+   "question": "交流会预计几点开始？",
+   "covers_item_ids": [
+    "item_4"
+   ],
+   "input_type": "single_choice",
+   "options": [
+    {
+     "label": "上午",
+     "value": "morning"
+    },
+    {
+     "label": "下午",
+     "value": "afternoon"
+    },
+    {
+     "label": "晚上",
+     "value": "evening"
+    }
+   ],
+   "allow_custom_input": true
+  }
+ ],
+ "manual_required": null,
+ "global_assumptions": [
+  "当前日期为2026-09-08周二，“周三前”理解为在2026-09-09周三当天完成全部子活动",
+  "请假为全天安排，按09:00开始、480分钟占位；各子活动时长按性质估算约60分钟"
+ ]
+}

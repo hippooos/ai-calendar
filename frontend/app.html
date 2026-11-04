@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hipposss — AI 日历</title>
+  <link rel="stylesheet" href="https://db.onlinewebfonts.com/c/5ac3fe7c6abd2f62067f266d89671492?family=HelveticaNowDisplay-Medium">
+  <link rel="stylesheet" href="https://db.onlinewebfonts.com/c/1aa3377e489837a26d019bba501e779d?family=HelveticaNowDisplayW01-Rg">
+  <link rel="stylesheet" href="./app.css">
+  <link rel="stylesheet" href="./components.css">
+  <script>
+    if (location.protocol === 'file:') {
+      window.addEventListener('DOMContentLoaded', function () {
+        document.body.innerHTML = '<div style="position:fixed;inset:0;z-index:9999;background:#05070c;color:#fff;padding:40px;font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;overflow:auto;"><h1 style="font-size:24px;margin-bottom:16px;">请通过 HTTP 服务器打开本页面</h1><p>你当前是通过 <code style="background:rgba(255,255,255,.15);padding:2px 6px;border-radius:4px;">file://</code> 协议直接双击 HTML 文件打开的，这会导致前端脚本被浏览器 CORS 策略阻止，从而日历数据无法加载、AI 功能失效、背景视频静止。</p><p>正确打开方式：</p><ul style="padding-left:20px;"><li>双击项目根目录的 <strong>启动AI日历.bat</strong></li><li>或在 <code style="background:rgba(255,255,255,.15);padding:2px 6px;border-radius:4px;">frontend</code> 目录运行 <code style="background:rgba(255,255,255,.15);padding:2px 6px;border-radius:4px;">node serve.mjs</code>，然后访问 <code style="background:rgba(255,255,255,.15);padding:2px 6px;border-radius:4px;">http://127.0.0.1:4173/app.html</code></li></ul></div>';
+      });
+    }
+  </script>
+</head>
+<body>
+  <video
+    id="bg-video"
+    class="app-video"
+    src="./hero_eyes_circle_smooth_10s.mp4"
+    muted
+    playsinline
+    preload="auto"
+  ></video>
+  <div class="app-scrim"></div>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="./home.html" aria-label="返回近期任务预览">
+        <span class="logo-text">Hipposss®</span>
+        <span class="logo-asterisk">✳︎</span>
+      </a>
+      <nav class="week-nav" aria-label="日历导航">
+        <button type="button" data-calendar-action="previous" aria-label="上一周">‹</button>
+        <button type="button" data-calendar-action="today">今天</button>
+        <button type="button" data-calendar-action="next" aria-label="下一周">›</button>
+        <span id="week-title">本周</span>
+      </nav>
+      <span class="assistant-status">● AI 助理</span>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <section class="today-card">
+          <small>今天</small>
+          <strong id="today-number">31</strong>
+          <p>把必须做的事放进时间表，也给生活留一点空白。</p>
+        </section>
+        <section class="rules">
+          <h2>我的时间规则</h2>
+          <p>工作时间 <span>09:00–18:00</span></p>
+          <p>睡眠时间 <span>23:00–07:00</span></p>
+          <p>规划窗口 <span>默认 14 天 · 一个月目标 30 天</span></p>
+        </section>
+      </aside>
+
+      <main class="main">
+        <div class="hero">
+          <div><small>本周视图</small><h1>把工作与生活，<em>放进同一张时间表。</em></h1></div>
+          <div class="legend"><span>已有日程</span><span class="ai">AI 计划</span></div>
+        </div>
+        <section id="calendar-grid" class="calendar-grid" aria-label="周日历">
+          <p class="calendar-empty">日历数据将在连接后显示</p>
+        </section>
+        <section class="composer">
+          <span class="orb">✦</span>
+          <div><strong>告诉 AI，你想安排哪些事情</strong><small>可以同时输入明确安排和长期目标</small></div>
+          <button type="button" class="primary" data-action="open">让 AI 帮我安排 ↗</button>
+        </section>
+        <div id="state-note" class="state-note">AI 日历已就绪</div>
+      </main>
+    </div>
+
+    <section id="flow" class="flow" aria-live="polite">
+      <article id="input-sheet" class="sheet" hidden>
+        <button type="button" class="close" data-action="close" aria-label="关闭">×</button>
+        <small class="steps">AI 安排流程 / 01 输入</small>
+        <h2>这次想让 AI 安排什么？</h2>
+        <p>可以一次说出多个安排和目标；确认草案前不会写入日历。</p>
+        <textarea id="planning-input">周三下午和客户开会，大概一小时；未来两周每周一、周三、周五下班后快走30分钟</textarea>
+        <div id="input-error" class="error" hidden></div>
+        <div class="actions"><button type="button" class="secondary" data-action="close">稍后再说</button><button id="generate-button" type="button" class="primary" data-action="generate">生成计划</button></div>
+      </article>
+
+      <article id="questions-sheet" class="sheet" hidden>
+        <button type="button" class="close" data-action="close" aria-label="关闭">×</button>
+        <small class="steps">AI 安排流程 / 02 汇总追问</small>
+        <h2>补齐关键信息</h2>
+        <p>只询问真正阻塞排程的内容。</p>
+        <div id="questions-list"></div>
+        <div id="questions-error" class="error" hidden></div>
+        <div class="actions"><button type="button" class="secondary" data-action="back">返回补充</button><button id="questions-submit" type="button" class="primary" data-action="questions">生成草案</button></div>
+      </article>
+
+      <article id="draft-sheet" class="sheet" hidden>
+        <button type="button" class="close" data-action="close" aria-label="关闭">×</button>
+        <small class="steps">AI 安排流程 / 03 草案确认</small>
+        <h2>确认这组安排</h2>
+        <div id="draft-list"></div>
+        <div id="draft-assumptions"></div>
+        <div id="draft-error" class="error" hidden></div>
+        <div class="actions"><button type="button" class="secondary" data-action="back">返回补充</button><button id="confirm-button" type="button" class="primary" data-action="confirm">整组确认并写入</button></div>
+      </article>
+
+      <article id="message-sheet" class="sheet" hidden>
+        <button type="button" class="close" data-action="close" aria-label="关闭">×</button>
+        <small class="steps">AI 安排流程</small>
+        <h2 id="message-title">暂时无法自动安排</h2>
+        <p id="message-body"></p>
+        <div class="actions"><button type="button" class="primary" data-action="back">返回修改</button></div>
+      </article>
+
+      <article id="edit-sheet" class="sheet" hidden>
+        <button type="button" class="close" data-action="cancel-edit" aria-label="关闭">×</button>
+        <small class="steps">AI 安排流程 / 编辑草案</small>
+        <h2>修改这条安排</h2>
+        <label class="field">标题<input id="edit-title" type="text" maxlength="200"></label>
+        <div class="field-row">
+          <label class="field">日期<input id="edit-date" type="date"></label>
+          <label class="field">开始<input id="edit-start" type="time"></label>
+          <label class="field">结束<input id="edit-end" type="time"></label>
+        </div>
+        <div id="edit-error" class="error" hidden></div>
+        <div class="actions"><button type="button" class="secondary" data-action="cancel-edit">取消</button><button type="button" class="primary" data-action="save-edit">保存修改</button></div>
+      </article>
+
+      <article id="delete-sheet" class="sheet compact" hidden>
+        <small class="steps">删除草案项目</small>
+        <h2>确定删除“<span id="delete-title"></span>”吗？</h2>
+        <p>只会从当前草案删除，尚未写入日历。</p>
+        <div class="actions"><button type="button" class="secondary" data-action="cancel-delete">保留</button><button type="button" class="danger" data-action="confirm-delete">确认删除</button></div>
+      </article>
+
+      <article id="access-sheet" class="sheet compact" hidden>
+        <small class="steps">部署访问验证</small>
+        <h2>请输入访问码</h2>
+        <p>访问码只保存在当前浏览器会话中。本机开发模式无需填写。</p>
+        <label class="field">访问码<input id="access-code" type="password" autocomplete="current-password"></label>
+        <div id="access-error" class="error" hidden></div>
+        <div class="actions"><button type="button" class="primary" data-action="save-access">继续</button></div>
+      </article>
+    </section>
+    <div id="toast" class="toast" role="status"></div>
+  </div>
+  <script type="module" src="./app.mjs"></script>
+</body>
+</html>

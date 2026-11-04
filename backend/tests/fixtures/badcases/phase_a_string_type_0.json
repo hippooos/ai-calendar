@@ -1,0 +1,470 @@
+{
+ "decision": "needs_clarification",
+ "items": [
+  {
+   "item_id": "1",
+   "kind": "explicit_event",
+   "source_text": "周三前我想请假",
+   "title": "请假",
+   "facts": {
+    "date": "2026-09-15",
+    "start_time": "09:00",
+    "end_time": null,
+    "duration_minutes": 480,
+    "deadline": "2026-09-16",
+    "stated_frequency": null,
+    "activity": "请假",
+    "result_metric": null
+   },
+   "hard_constraints": {
+    "allowed_weekdays": [
+     2
+    ],
+    "required_periods": [
+     "morning",
+     "afternoon"
+    ],
+    "fixed_date": "2026-09-15",
+    "fixed_start_time": "09:00",
+    "required_occurrences_within_window": null,
+    "required_frequency_per_week": null,
+    "minimum_gap_hours": null
+   },
+   "soft_preferences": {
+    "preferred_periods": [],
+    "pacing": "neutral"
+   },
+   "provenance": [
+    {
+     "field_path": "facts.date",
+     "value": "2026-09-15",
+     "source": "ai_assumption",
+     "reason": "请假为前置动作，默认安排在主活动前一天；reference_now 为周二，主活动在周三",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    },
+    {
+     "field_path": "facts.start_time",
+     "value": "09:00",
+     "source": "ai_assumption",
+     "reason": "请假按全天占位，默认从工作开始时间09:00",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    },
+    {
+     "field_path": "facts.duration_minutes",
+     "value": 480,
+     "source": "ai_assumption",
+     "reason": "请假按全天占位8小时",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    },
+    {
+     "field_path": "facts.deadline",
+     "value": "2026-09-16",
+     "source": "system_derived",
+     "reason": "用户说周三前，周三为2026-09-16",
+     "user_editable": true,
+     "display_label": "AI建议，可修改或删除"
+    },
+    {
+     "field_path": "hard_constraints.fixed_date",
+     "value": "2026-09-15",
+     "source": "ai_assumption",
+     "reason": "前置动作默认排在主活动前一天",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    },
+    {
+     "field_path": "hard_constraints.fixed_start_time",
+     "value": "09:00",
+     "source": "ai_assumption",
+     "reason": "全天请假从工作开始时间",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    },
+    {
+     "field_path": "hard_constraints.allowed_weekdays",
+     "value": [
+      2
+     ],
+     "source": "system_derived",
+     "reason": "2026-09-15为周二",
+     "user_editable": true,
+     "display_label": "AI建议，可修改或删除"
+    },
+    {
+     "field_path": "hard_constraints.required_periods",
+     "value": [
+      "morning",
+      "afternoon"
+     ],
+     "source": "ai_assumption",
+     "reason": "全天请假覆盖上午和下午",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    },
+    {
+     "field_path": "facts.date",
+     "value": "2026-09-15",
+     "source": "ai_assumption",
+     "reason": "请假需在主活动前一天完成，按主活动日期默认前推一天",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    },
+    {
+     "field_path": "facts.start_time",
+     "value": "09:00",
+     "source": "ai_assumption",
+     "reason": "全天事务按上午九点占位",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    },
+    {
+     "field_path": "facts.duration_minutes",
+     "value": 480,
+     "source": "ai_assumption",
+     "reason": "全天事务按 8 小时占位",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    }
+   ],
+   "critical_missing": [],
+   "assumptions": [
+    "请假安排在主活动前一天（周二2026-09-15），按全天占位",
+    "请假不占用追问名额，使用默认全天占位值",
+    "请假安排在主活动前一天（AI 假设，可修改）"
+   ]
+  },
+  {
+   "item_id": "2",
+   "kind": "explicit_event",
+   "source_text": "前往A地办事流程",
+   "title": "前往A地办事流程",
+   "facts": {
+    "date": "2026-09-16",
+    "start_time": null,
+    "end_time": null,
+    "duration_minutes": 60,
+    "deadline": "2026-09-16",
+    "stated_frequency": null,
+    "activity": "前往A地办事流程",
+    "result_metric": null
+   },
+   "hard_constraints": {
+    "allowed_weekdays": [
+     3
+    ],
+    "required_periods": [],
+    "fixed_date": "2026-09-16",
+    "fixed_start_time": null,
+    "required_occurrences_within_window": null,
+    "required_frequency_per_week": null,
+    "minimum_gap_hours": null
+   },
+   "soft_preferences": {
+    "preferred_periods": [],
+    "pacing": "neutral"
+   },
+   "provenance": [
+    {
+     "field_path": "facts.date",
+     "value": "2026-09-16",
+     "source": "system_derived",
+     "reason": "用户说周三前，主活动排在周三当天",
+     "user_editable": true,
+     "display_label": "AI建议，可修改或删除"
+    },
+    {
+     "field_path": "facts.duration_minutes",
+     "value": 60,
+     "source": "ai_assumption",
+     "reason": "办事流程按活动性质估算约60分钟",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    },
+    {
+     "field_path": "facts.deadline",
+     "value": "2026-09-16",
+     "source": "system_derived",
+     "reason": "用户说周三前，周三为2026-09-16",
+     "user_editable": true,
+     "display_label": "AI建议，可修改或删除"
+    },
+    {
+     "field_path": "hard_constraints.fixed_date",
+     "value": "2026-09-16",
+     "source": "system_derived",
+     "reason": "主活动排在截止日当天",
+     "user_editable": true,
+     "display_label": "AI建议，可修改或删除"
+    },
+    {
+     "field_path": "hard_constraints.allowed_weekdays",
+     "value": [
+      3
+     ],
+     "source": "system_derived",
+     "reason": "2026-09-16为周三",
+     "user_editable": true,
+     "display_label": "AI建议，可修改或删除"
+    }
+   ],
+   "critical_missing": [
+    "facts.start_time"
+   ],
+   "assumptions": [
+    "办事流程时长按活动性质估算约60分钟",
+    "主活动排在周三当天，与请假前置动作分两天"
+   ]
+  },
+  {
+   "item_id": "3",
+   "kind": "explicit_event",
+   "source_text": "现场登记",
+   "title": "现场登记",
+   "facts": {
+    "date": "2026-09-16",
+    "start_time": null,
+    "end_time": null,
+    "duration_minutes": 60,
+    "deadline": "2026-09-16",
+    "stated_frequency": null,
+    "activity": "现场登记",
+    "result_metric": null
+   },
+   "hard_constraints": {
+    "allowed_weekdays": [
+     3
+    ],
+    "required_periods": [],
+    "fixed_date": "2026-09-16",
+    "fixed_start_time": null,
+    "required_occurrences_within_window": null,
+    "required_frequency_per_week": null,
+    "minimum_gap_hours": null
+   },
+   "soft_preferences": {
+    "preferred_periods": [],
+    "pacing": "neutral"
+   },
+   "provenance": [
+    {
+     "field_path": "facts.date",
+     "value": "2026-09-16",
+     "source": "system_derived",
+     "reason": "用户说周三前，主活动排在周三当天",
+     "user_editable": true,
+     "display_label": "AI建议，可修改或删除"
+    },
+    {
+     "field_path": "facts.duration_minutes",
+     "value": 60,
+     "source": "ai_assumption",
+     "reason": "现场登记按活动性质估算约60分钟",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    },
+    {
+     "field_path": "facts.deadline",
+     "value": "2026-09-16",
+     "source": "system_derived",
+     "reason": "用户说周三前，周三为2026-09-16",
+     "user_editable": true,
+     "display_label": "AI建议，可修改或删除"
+    },
+    {
+     "field_path": "hard_constraints.fixed_date",
+     "value": "2026-09-16",
+     "source": "system_derived",
+     "reason": "主活动排在截止日当天",
+     "user_editable": true,
+     "display_label": "AI建议，可修改或删除"
+    },
+    {
+     "field_path": "hard_constraints.allowed_weekdays",
+     "value": [
+      3
+     ],
+     "source": "system_derived",
+     "reason": "2026-09-16为周三",
+     "user_editable": true,
+     "display_label": "AI建议，可修改或删除"
+    }
+   ],
+   "critical_missing": [
+    "facts.start_time"
+   ],
+   "assumptions": [
+    "现场登记时长按活动性质估算约60分钟",
+    "主活动排在周三当天"
+   ]
+  },
+  {
+   "item_id": "4",
+   "kind": "explicit_event",
+   "source_text": "交流会",
+   "title": "交流会",
+   "facts": {
+    "date": "2026-09-16",
+    "start_time": null,
+    "end_time": null,
+    "duration_minutes": 60,
+    "deadline": "2026-09-16",
+    "stated_frequency": null,
+    "activity": "参加交流会",
+    "result_metric": null
+   },
+   "hard_constraints": {
+    "allowed_weekdays": [
+     3
+    ],
+    "required_periods": [],
+    "fixed_date": "2026-09-16",
+    "fixed_start_time": null,
+    "required_occurrences_within_window": null,
+    "required_frequency_per_week": null,
+    "minimum_gap_hours": null
+   },
+   "soft_preferences": {
+    "preferred_periods": [],
+    "pacing": "neutral"
+   },
+   "provenance": [
+    {
+     "field_path": "facts.date",
+     "value": "2026-09-16",
+     "source": "system_derived",
+     "reason": "用户说周三前，主活动排在周三当天",
+     "user_editable": true,
+     "display_label": "AI建议，可修改或删除"
+    },
+    {
+     "field_path": "facts.duration_minutes",
+     "value": 60,
+     "source": "ai_assumption",
+     "reason": "交流会按活动性质估算约60分钟",
+     "user_editable": true,
+     "display_label": "AI猜测，可修改"
+    },
+    {
+     "field_path": "facts.deadline",
+     "value": "2026-09-16",
+     "source": "system_derived",
+     "reason": "用户说周三前，周三为2026-09-16",
+     "user_editable": true,
+     "display_label": "AI建议，可修改或删除"
+    },
+    {
+     "field_path": "hard_constraints.fixed_date",
+     "value": "2026-09-16",
+     "source": "system_derived",
+     "reason": "主活动排在截止日当天",
+     "user_editable": true,
+     "display_label": "AI建议，可修改或删除"
+    },
+    {
+     "field_path": "hard_constraints.allowed_weekdays",
+     "value": [
+      3
+     ],
+     "source": "system_derived",
+     "reason": "2026-09-16为周三",
+     "user_editable": true,
+     "display_label": "AI建议，可修改或删除"
+    }
+   ],
+   "critical_missing": [
+    "facts.start_time"
+   ],
+   "assumptions": [
+    "交流会时长按活动性质估算约60分钟",
+    "主活动排在周三当天"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "question_id": "q1",
+   "priority": 30,
+   "missing_field": "facts.start_time",
+   "question": "前往A地办事流程预计在周三几点开始？",
+   "covers_item_ids": [
+    2
+   ],
+   "input_type": "single_choice",
+   "options": [
+    {
+     "label": "上午",
+     "value": "morning"
+    },
+    {
+     "label": "下午",
+     "value": "afternoon"
+    },
+    {
+     "label": "晚上",
+     "value": "evening"
+    }
+   ],
+   "allow_custom_input": true
+  },
+  {
+   "question_id": "q2",
+   "priority": 30,
+   "missing_field": "facts.start_time",
+   "question": "现场登记预计在周三几点开始？",
+   "covers_item_ids": [
+    3
+   ],
+   "input_type": "single_choice",
+   "options": [
+    {
+     "label": "上午",
+     "value": "morning"
+    },
+    {
+     "label": "下午",
+     "value": "afternoon"
+    },
+    {
+     "label": "晚上",
+     "value": "evening"
+    }
+   ],
+   "allow_custom_input": true
+  },
+  {
+   "question_id": "q3",
+   "priority": 30,
+   "missing_field": "facts.start_time",
+   "question": "交流会预计在周三几点开始？",
+   "covers_item_ids": [
+    4
+   ],
+   "input_type": "single_choice",
+   "options": [
+    {
+     "label": "上午",
+     "value": "morning"
+    },
+    {
+     "label": "下午",
+     "value": "afternoon"
+    },
+    {
+     "label": "晚上",
+     "value": "evening"
+    }
+   ],
+   "allow_custom_input": true
+  }
+ ],
+ "manual_required": null,
+ "global_assumptions": [
+  "用户说周三前，当前为周二2026-09-15，周三为2026-09-16",
+  "请假为前置动作安排在主活动前一天（周二），按全天占位",
+  "办事流程、现场登记、交流会三个主活动排在周三当天",
+  "各子活动时长按活动性质估算约60分钟"
+ ]
+}

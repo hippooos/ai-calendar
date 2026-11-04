@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: ai-calendar-api
+    runtime: docker
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /readyz
+    envVars:
+      - key: APP_MODE
+        value: deployed
+      - key: APP_ACCESS_CODE
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: LLM_API_KEY
+        sync: false
+      - key: LLM_BASE_URL
+        value: https://open.bigmodel.cn/api/paas/v4
+      - key: LLM_MODEL
+        value: glm-5.2
+      - key: LLM_TIMEOUT_SECONDS
+        value: "120"
+      - key: LLM_MAX_OUTPUT_TOKENS
+        value: "4096"
+      - key: DEFAULT_TIMEZONE
+        value: Asia/Shanghai

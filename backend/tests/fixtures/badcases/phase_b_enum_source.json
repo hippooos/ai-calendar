@@ -1,0 +1,296 @@
+{
+ "decision": "ready_for_scheduling",
+ "fixed_events": [],
+ "goal_plans": [
+  {
+   "source_item_id": "item_1",
+   "goal_title": "最近一个月周末打羽毛球",
+   "deadline": "2026-10-15",
+   "deadline_provenance": {
+    "field_path": "deadline",
+    "value": "2026-10-15",
+    "source": "system_derived",
+    "reason": "参考当前日期2026-09-15加一个月",
+    "user_editable": true,
+    "display_label": "系统推算，可修改"
+   },
+   "importance": "medium",
+   "urgency": "low",
+   "suggested_goal_horizon_days": 30,
+   "task_templates": [
+    {
+     "task_id": "task_1",
+     "title": "打羽毛球",
+     "activity_type": "运动",
+     "instructions": "周末打羽毛球，进行热身后对打或练习，注意控制强度避免受伤",
+     "duration_minutes": 90,
+     "occurrences_within_window": 8,
+     "frequency_per_week": 2,
+     "min_gap_hours": 36,
+     "depends_on": [],
+     "hard_constraints": {
+      "allowed_weekdays": [
+       6,
+       7
+      ],
+      "required_periods": [
+       "any"
+      ],
+      "fixed_date": null,
+      "fixed_start_time": null,
+      "must_finish_before": null,
+      "required_occurrences_within_window": 8,
+      "required_frequency_per_week": 2,
+      "minimum_gap_hours": 36
+     },
+     "soft_preferences": {
+      "preferred_periods": [],
+      "pacing": "neutral"
+     },
+     "source": "user_input",
+     "provenance": [
+      {
+       "field_path": "title",
+       "value": "打羽毛球",
+       "source": "user_input",
+       "reason": "用户明确说出的活动",
+       "user_editable": true,
+       "display_label": "用户输入"
+      },
+      {
+       "field_path": "duration_minutes",
+       "value": 90,
+       "source": "ai_assumption",
+       "reason": "用户未指定时长，采用保守默认90分钟",
+       "user_editable": true,
+       "display_label": "AI猜测，可修改"
+      },
+      {
+       "field_path": "occurrences_within_window",
+       "value": 8,
+       "source": "ai_assumption",
+       "reason": "用户说'周末都'，一个月约4个周末共8次",
+       "user_editable": true,
+       "display_label": "AI猜测，可修改"
+      },
+      {
+       "field_path": "frequency_per_week",
+       "value": 2,
+       "source": "ai_assumption",
+       "reason": "每周末2天各1次",
+       "user_editable": true,
+       "display_label": "AI猜测，可修改"
+      },
+      {
+       "field_path": "min_gap_hours",
+       "value": 36,
+       "source": "system_derived",
+       "reason": "运动类任务每周2次，按规则设置最小间隔36小时",
+       "user_editable": true,
+       "display_label": "系统规则"
+      }
+     ],
+     "assumptions": [
+      "用户未指定具体时段，使用any",
+      "单次时长默认90分钟，可修改",
+      "每周六日各安排1次，共8次"
+     ]
+    }
+   ],
+   "assumptions": [
+    "用户未指定具体时段和时长，使用保守默认安排",
+    "deadline由参考日期加一个月推算"
+   ]
+  },
+  {
+   "source_item_id": "item_2",
+   "goal_title": "最近一个月准备面试",
+   "deadline": "2026-10-15",
+   "deadline_provenance": {
+    "field_path": "deadline",
+    "value": "2026-10-15",
+    "source": "system_derived",
+    "reason": "参考当前日期2026-09-15加一个月",
+    "user_editable": true,
+    "display_label": "系统推算，可修改"
+   },
+   "importance": "medium",
+   "urgency": "medium",
+   "suggested_goal_horizon_days": 30,
+   "task_templates": [
+    {
+     "task_id": "task_2",
+     "title": "面试知识复习与刷题",
+     "activity_type": "学习",
+     "instructions": "复习面试相关知识点，结合刷题平台练习算法或专业题，整理薄弱环节",
+     "duration_minutes": 90,
+     "occurrences_within_window": 8,
+     "frequency_per_week": 2,
+     "min_gap_hours": 0,
+     "depends_on": [],
+     "hard_constraints": {
+      "allowed_weekdays": [],
+      "required_periods": [],
+      "fixed_date": null,
+      "fixed_start_time": null,
+      "must_finish_before": null,
+      "required_occurrences_within_window": null,
+      "required_frequency_per_week": null,
+      "minimum_gap_hours": null
+     },
+     "soft_preferences": {
+      "preferred_periods": [
+       "after_work"
+      ],
+      "pacing": "distributed"
+     },
+     "source": "ai_suggestion",
+     "provenance": [
+      {
+       "field_path": "title",
+       "value": "面试知识复习与刷题",
+       "source": "ai_suggestion",
+       "reason": "用户说'准备面试'但未指定具体内容，建议知识复习加刷题",
+       "user_editable": true,
+       "display_label": "AI建议，可修改或删除"
+      },
+      {
+       "field_path": "duration_minutes",
+       "value": 90,
+       "source": "ai_assumption",
+       "reason": "用户未指定时长，采用默认90分钟",
+       "user_editable": true,
+       "display_label": "AI猜测，可修改"
+      },
+      {
+       "field_path": "occurrences_within_window",
+       "value": 8,
+       "source": "ai_assumption",
+       "reason": "用户未指定频率，保守建议每周2次共8次",
+       "user_editable": true,
+       "display_label": "AI猜测，可修改"
+      },
+      {
+       "field_path": "frequency_per_week",
+       "value": 2,
+       "source": "ai_assumption",
+       "reason": "用户未指定频率，保守建议每周2次",
+       "user_editable": true,
+       "display_label": "AI猜测，可修改"
+      },
+      {
+       "field_path": "soft_preferences.preferred_periods",
+       "value": [
+        "after_work"
+       ],
+       "source": "ai_suggestion",
+       "reason": "用户有全职工作，建议下班后时段",
+       "user_editable": true,
+       "display_label": "AI建议，可修改或删除"
+      },
+      {
+       "field_path": "soft_preferences.pacing",
+       "value": "distributed",
+       "source": "ai_suggestion",
+       "reason": "面试准备适合分散安排避免临时抱佛脚",
+       "user_editable": true,
+       "display_label": "AI建议，可修改或删除"
+      }
+     ],
+     "assumptions": [
+      "用户未指定具体面试方向，任务内容为通用建议",
+      "用户未指定频率和时长，使用保守默认值",
+      "非运动任务不设硬间隔，min_gap_hours为0"
+     ]
+    },
+    {
+     "task_id": "task_3",
+     "title": "模拟面试练习",
+     "activity_type": "学习",
+     "instructions": "进行模拟面试，可自我提问回答或使用模拟面试工具，练习自我介绍和常见行为面试题",
+     "duration_minutes": 60,
+     "occurrences_within_window": 4,
+     "frequency_per_week": 1,
+     "min_gap_hours": 0,
+     "depends_on": [],
+     "hard_constraints": {
+      "allowed_weekdays": [],
+      "required_periods": [],
+      "fixed_date": null,
+      "fixed_start_time": null,
+      "must_finish_before": null,
+      "required_occurrences_within_window": null,
+      "required_frequency_per_week": null,
+      "minimum_gap_hours": null
+     },
+     "soft_preferences": {
+      "preferred_periods": [
+       "after_work"
+      ],
+      "pacing": "distributed"
+     },
+     "source": "ai_suggestion",
+     "provenance": [
+      {
+       "field_path": "title",
+       "value": "模拟面试练习",
+       "source": "ai_suggestion",
+       "reason": "面试准备除知识复习外建议加入模拟练习",
+       "user_editable": true,
+       "display_label": "AI建议，可修改或删除"
+      },
+      {
+       "field_path": "duration_minutes",
+       "value": 60,
+       "source": "ai_assumption",
+       "reason": "模拟面试单次60分钟较为合理",
+       "user_editable": true,
+       "display_label": "AI猜测，可修改"
+      },
+      {
+       "field_path": "occurrences_within_window",
+       "value": 4,
+       "source": "ai_assumption",
+       "reason": "每周1次共4次，避免与复习任务过载",
+       "user_editable": true,
+       "display_label": "AI猜测，可修改"
+      },
+      {
+       "field_path": "frequency_per_week",
+       "value": 1,
+       "source": "ai_assuggestion",
+       "reason": "每周1次模拟练习",
+       "user_editable": true,
+       "display_label": "AI猜测，可修改"
+      },
+      {
+       "field_path": "soft_preferences.preferred_periods",
+       "value": [
+        "after_work"
+       ],
+       "source": "ai_suggestion",
+       "reason": "用户有全职工作，建议下班后时段",
+       "user_editable": true,
+       "display_label": "AI建议，可修改或删除"
+      }
+     ],
+     "assumptions": [
+      "模拟面试为AI建议任务，用户可删除或修改",
+      "非运动任务不设硬间隔，min_gap_hours为0"
+     ]
+    }
+   ],
+   "assumptions": [
+    "用户未指定频率、时段和时长，使用保守默认安排",
+    "deadline由参考日期加一个月推算",
+    "用户未提供具体面试日期，准备面试作为独立抽象目标处理",
+    "两类任务总次数12次、总时长960分钟，超过14天窗口限制但目标窗口为30天"
+   ]
+  }
+ ],
+ "assumptions": [
+  "当前日期为2026-09-15，'最近一个月'推算为截止2026-10-15",
+  "用户未提供具体面试日期，准备面试作为独立抽象目标处理",
+  "所有AI猜测和建议均可在后续修改"
+ ]
+}

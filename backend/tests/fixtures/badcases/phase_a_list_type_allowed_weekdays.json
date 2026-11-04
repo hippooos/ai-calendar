@@ -1,0 +1,144 @@
+{
+ "decision": "ready",
+ "items": [
+  {
+   "item_id": "item_1",
+   "kind": "abstract_goal",
+   "source_text": "最近一个月我想周末都打打羽毛球",
+   "title": "最近一个月周末打羽毛球",
+   "facts": {
+    "date": null,
+    "start_time": null,
+    "end_time": null,
+    "duration_minutes": null,
+    "deadline": "2026-10-08",
+    "stated_frequency": "每周周末",
+    "activity": "打羽毛球",
+    "result_metric": null
+   },
+   "hard_constraints": {
+    "allowed_weekdays": [
+     6,
+     7
+    ],
+    "required_periods": [
+     "any"
+    ],
+    "fixed_date": null,
+    "fixed_start_time": null,
+    "required_occurrences_within_window": null,
+    "required_frequency_per_week": null,
+    "minimum_gap_hours": null
+   },
+   "soft_preferences": {
+    "preferred_periods": [
+     "any"
+    ],
+    "pacing": "neutral"
+   },
+   "provenance": [
+    {
+     "field_path": "facts.activity",
+     "value": "打羽毛球",
+     "source": "user_input",
+     "reason": "用户明确说出的具体活动",
+     "user_editable": true,
+     "display_label": "用户输入"
+    },
+    {
+     "field_path": "facts.deadline",
+     "value": "2026-10-08",
+     "source": "system_derived",
+     "reason": "用户说最近一个月，以2026-09-08为起点推算30天",
+     "user_editable": true,
+     "display_label": "系统推算，可修改"
+    },
+    {
+     "field_path": "facts.stated_frequency",
+     "value": "每周周末",
+     "source": "user_input",
+     "reason": "用户说周末都打打羽毛球",
+     "user_editable": true,
+     "display_label": "用户输入"
+    },
+    {
+     "field_path": "hard_constraints.allowed_weekdays",
+     "value": [
+      6,
+      7
+     ],
+     "source": "user_input",
+     "reason": "用户明确说周末",
+     "user_editable": true,
+     "display_label": "用户输入"
+    }
+   ],
+   "critical_missing": [],
+   "assumptions": [
+    "用户说周末，未指定具体是周六还是周日，也未指定上午或下午，交给阶段B安排",
+    "用户未指定每次打羽毛球的时长，交给阶段B使用保守默认"
+   ]
+  },
+  {
+   "item_id": "item_2",
+   "kind": "abstract_goal",
+   "source_text": "最近一个月我想准备准备面试",
+   "title": "最近一个月准备面试",
+   "facts": {
+    "date": null,
+    "start_time": null,
+    "end_time": null,
+    "duration_minutes": null,
+    "deadline": "2026-10-08",
+    "stated_frequency": null,
+    "activity": "准备面试",
+    "result_metric": null
+   },
+   "hard_constraints": {
+    "allowed_weekdays": null,
+    "required_periods": [
+     "any"
+    ],
+    "fixed_date": null,
+    "fixed_start_time": null,
+    "required_occurrences_within_window": null,
+    "required_frequency_per_week": null,
+    "minimum_gap_hours": null
+   },
+   "soft_preferences": {
+    "preferred_periods": [
+     "any"
+    ],
+    "pacing": "neutral"
+   },
+   "provenance": [
+    {
+     "field_path": "facts.activity",
+     "value": "准备面试",
+     "source": "user_input",
+     "reason": "用户明确说出的活动",
+     "user_editable": true,
+     "display_label": "用户输入"
+    },
+    {
+     "field_path": "facts.deadline",
+     "value": "2026-10-08",
+     "source": "system_derived",
+     "reason": "用户说最近一个月，以2026-09-08为起点推算30天",
+     "user_editable": true,
+     "display_label": "系统推算，可修改"
+    }
+   ],
+   "critical_missing": [],
+   "assumptions": [
+    "用户未指定面试日期、准备频率和每次准备时长，属于抽象目标，交给阶段B使用保守默认"
+   ]
+  }
+ ],
+ "questions": [],
+ "manual_required": null,
+ "global_assumptions": [
+  "用户说的最近一个月理解为从2026-09-08起约30天，截止日约为2026-10-08",
+  "用户未指定具体面试日期，准备面试作为抽象目标处理，不追问"
+ ]
+}

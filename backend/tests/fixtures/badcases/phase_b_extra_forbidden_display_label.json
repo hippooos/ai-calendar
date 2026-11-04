@@ -1,0 +1,137 @@
+{
+ "decision": "ready_for_scheduling",
+ "fixed_events": [
+  {
+   "source_item_id": "item_1",
+   "title": "AI面试",
+   "date": "2026-09-05",
+   "start_time": "15:30:00",
+   "end_time": "16:30:00",
+   "duration_minutes": 60,
+   "assumptions": [
+    "面试时长默认为60分钟"
+   ]
+  }
+ ],
+ "goal_plans": [
+  {
+   "source_item_id": "item_2",
+   "goal_title": "AI面试准备",
+   "deadline": "2026-09-05",
+   "deadline_provenance": {
+    "field_path": "deadline",
+    "value": "2026-09-05",
+    "source": "system_derived",
+    "reason": "用户说在明确安排之前完成，截止到该安排开始时刻",
+    "user_editable": true,
+    "display_label": "须在2026-09-05 15:30前完成"
+   },
+   "importance": "high",
+   "urgency": "high",
+   "suggested_goal_horizon_days": 4,
+   "task_templates": [
+    {
+     "task_id": "task_1",
+     "title": "AI面试知识复习与模拟练习",
+     "activity_type": "interview_preparation",
+     "instructions": "复习AI相关基础知识（机器学习、深度学习、NLP等核心概念），结合常见面试题进行模拟问答练习；每次利用碎片时间完成一个小专题或一组练习题",
+     "duration_minutes": 30,
+     "occurrences_within_window": 8,
+     "frequency_per_week": 4,
+     "min_gap_hours": 0,
+     "depends_on": [],
+     "hard_constraints": {
+      "allowed_weekdays": [],
+      "required_periods": [],
+      "fixed_date": null,
+      "fixed_start_time": null,
+      "must_finish_before": "2026-09-05T15:30:00+08:00",
+      "required_occurrences_within_window": null,
+      "required_frequency_per_week": null,
+      "minimum_gap_hours": null
+     },
+     "soft_preferences": {
+      "preferred_periods": [],
+      "pacing": "fragmented"
+     },
+     "source": "ai_suggestion",
+     "provenance": [
+      {
+       "field_path": "task_template.title",
+       "value": "AI面试知识复习与模拟练习",
+       "source": "ai_suggestion",
+       "reason": "用户明确说要准备AI面试，但未指定具体准备内容，AI建议涵盖知识复习与模拟练习",
+       "user_editable": true,
+       "display_label": "AI建议，可修改或删除"
+      },
+      {
+       "field_path": "task_template.duration_minutes",
+       "value": 30,
+       "source": "ai_suggestion",
+       "reason": "用户要求利用碎片时间，AI建议每次30分钟适合碎片化安排",
+       "user_editable": true,
+       "display_label": "AI建议，可修改或删除"
+      },
+      {
+       "field_path": "task_template.occurrences_within_window",
+       "value": 8,
+       "source": "ai_suggestion",
+       "reason": "基准时间9月7日至面试9月5日跨4天窗口，建议8次以碎片化覆盖各专题",
+       "user_editable": true,
+       "display_label": "AI建议，可修改或删除"
+      },
+      {
+       "field_path": "task_template.frequency_per_week",
+       "value": 4,
+       "source": "ai_suggestion",
+       "reason": "窗口约4天，按每周4次频率建议",
+       "user_editable": true,
+       "display_label": "AI建议，可修改或删除"
+      },
+      {
+       "field_path": "task_template.min_gap_hours",
+       "value": 0,
+       "source": "system_derived",
+       "reason": "用户未明确要求最小间隔，非运动类任务默认0",
+       "user_editable": true,
+       "display_label": "系统默认"
+      },
+      {
+       "field_path": "task_template.hard_constraints.must_finish_before",
+       "value": "2026-09-05T15:30:00+08:00",
+       "source": "system_derived",
+       "reason": "用户说在明确安排之前完成，截止到该安排开始时刻",
+       "user_editable": true,
+       "display_label": "须在2026-09-05 15:30前完成"
+      },
+      {
+       "field_path": "task_template.soft_preferences.pacing",
+       "value": "fragmented",
+       "source": "user_input",
+       "reason": "用户明确说利用碎片时间",
+       "user_editable": true,
+       "display_label": "碎片时间"
+      }
+     ],
+     "assumptions": [
+      "用户未指定具体准备内容，AI建议涵盖知识复习与模拟练习",
+      "每次30分钟适合碎片化安排",
+      "窗口内建议8次以覆盖多个专题"
+     ],
+     "display_label": "AI建议，可修改或删除"
+    }
+   ],
+   "assumptions": [
+    "用户未指定具体准备内容，AI建议涵盖知识复习与模拟练习",
+    "每次30分钟适合碎片化安排",
+    "窗口内建议8次以覆盖多个专题"
+   ]
+  }
+ ],
+ "assumptions": [
+  "面试时长默认为60分钟",
+  "用户未指定具体准备内容，AI建议涵盖知识复习与模拟练习",
+  "每次30分钟适合碎片化安排",
+  "窗口内建议8次以覆盖多个专题"
+ ]
+}

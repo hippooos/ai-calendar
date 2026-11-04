@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hipposss — AI 日历</title>
+  <link rel="stylesheet" href="https://db.onlinewebfonts.com/c/5ac3fe7c6abd2f62067f266d89671492?family=HelveticaNowDisplay-Medium">
+  <link rel="stylesheet" href="https://db.onlinewebfonts.com/c/1aa3377e489837a26d019bba501e779d?family=HelveticaNowDisplayW01-Rg">
+  <link rel="stylesheet" href="./app.css">
+  <link rel="stylesheet" href="./components.css">
+  <script>
+    if (location.protocol === 'file:') {
+      window.addEventListener('DOMContentLoaded', function () {
+        document.body.innerHTML = '<div style="position:fixed;inset:0;z-index:9999;background:#05070c;color:#fff;padding:40px;font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;overflow:auto;"><h1 style="font-size:24px;margin-bottom:16px;">请通过 HTTP 服务器打开本页面</h1><p>你当前是通过 <code style="background:rgba(255,255,255,.15);padding:2px 6px;border-radius:4px;">file://</code> 协议直接双击 HTML 文件打开的，这会导致前端脚本被浏览器 CORS 策略阻止，从而最近日程无法加载、AI 功能失效、背景视频静止。</p><p>正确打开方式：</p><ul style="padding-left:20px;"><li>双击项目根目录的 <strong>启动AI日历.bat</strong></li><li>或在 <code style="background:rgba(255,255,255,.15);padding:2px 6px;border-radius:4px;">frontend</code> 目录运行 <code style="background:rgba(255,255,255,.15);padding:2px 6px;border-radius:4px;">node serve.mjs</code>，然后访问 <code style="background:rgba(255,255,255,.15);padding:2px 6px;border-radius:4px;">http://127.0.0.1:4173/</code></li></ul></div>';
+      });
+    }
+  </script>
+</head>
+<body class="home">
+  <video
+    id="bg-video"
+    class="app-video"
+    src="./hero_eyes_circle_smooth_10s.mp4"
+    muted
+    playsinline
+    preload="auto"
+  ></video>
+  <div class="app-scrim"></div>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo-text">Hipposss®</span>
+        <span class="logo-asterisk">✳︎</span>
+      </div>
+      <nav class="week-nav" aria-label="日历导航"></nav>
+      <span class="assistant-status">● AI 助理</span>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <section class="today-card">
+          <small>今天</small>
+          <strong id="today-number">23</strong>
+          <p>把必须做的事放进时间表，也给生活留一点空白。</p>
+        </section>
+        <section class="rules">
+          <h2>我的时间规则</h2>
+          <p>工作时间 <span>09:00–18:00</span></p>
+          <p>睡眠时间 <span>23:00–07:00</span></p>
+          <p>规划窗口 <span>默认 14 天 · 一个月目标 30 天</span></p>
+        </section>
+      </aside>
+
+      <main class="main">
+        <div class="entry-panel">
+          <div class="entry-head">
+            <span class="entry-label">最近的日程</span>
+            <a class="entry-link" href="./app.html">查看完整日历</a>
+          </div>
+          <table class="entry-table">
+            <thead>
+              <tr><th>时间</th><th>日程</th></tr>
+            </thead>
+            <tbody id="entry-events"></tbody>
+          </table>
+        </div>
+
+        <section class="composer">
+          <span class="orb">✦</span>
+          <div><strong>告诉 AI，你想安排哪些事情</strong><small>可以同时输入明确安排和长期目标</small></div>
+          <button type="button" class="primary" id="home-compose">让 AI 帮我安排 ↗</button>
+        </section>
+      </main>
+    </div>
+  </div>
+  <script type="module" src="./home.mjs"></script>
+</body>
+</html>
